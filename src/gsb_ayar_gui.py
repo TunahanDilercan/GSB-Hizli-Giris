@@ -58,16 +58,17 @@ def cfg_path(account_id: int) -> Path:
 
 
 def get_icon_path() -> "Path | None":
-    """Find favicon.png or icon.ico in standard locations."""
-    # Check GSB standard locations - prioritize ICO (more reliable)
+    """Find icon.ico or icon.png in standard locations."""
     candidates = [
-        cfg_dir() / "icons" / "icon.ico",                           # primary ICO
-        cfg_dir() / "icons" / "favicon.png",                        # primary PNG
-        cfg_dir() / "icons" / "GSB_Giris.ico",                      # alt ICO
-        base_dir() / "assets" / "icons" / "icon.ico",              # dev env ICO
-        base_dir() / "assets" / "icons" / "icon.png",              # dev env PNG
+        cfg_dir() / "icons" / "icon.ico",           # primary ICO (GSB_Sistem/GSB_Dosyalar/icons/)
+        cfg_dir() / "icons" / "GSB_Giris.ico",      # fallback ICO
+        cfg_dir() / "icons" / "favicon.png",        # primary PNG
+        cfg_dir() / "icons" / "icon.png",           # alt PNG
+        base_dir().parent / "GSB_Sistem" / "GSB_Dosyalar" / "icons" / "icon.ico",  # Layout A
+        base_dir().parent / "GSB_Sistem" / "GSB_Dosyalar" / "icons" / "favicon.png",
+        base_dir() / "assets" / "icons" / "icon.ico",  # dev env
+        base_dir() / "assets" / "icons" / "icon.png",
     ]
-    
     for c in candidates:
         if c.exists():
             return c
@@ -193,15 +194,15 @@ def main() -> None:
     # Pencere handle hazır olunca title bar ayarla
     root.after(60, _set_windows_titlebar)
 
-    # Pencere ikonu (header/logo bar yok) - try ICO first, then PNG
-    icon_p = get_icon_path()
-    if icon_p:
+    # Pencere ikonu - after() ile pencere hazır olduktan sonra yükle
+    def _set_icon() -> None:
+        icon_p = get_icon_path()
+        if not icon_p:
+            return
         try:
             if str(icon_p).endswith('.ico'):
-                # Use iconbitmap for ICO files (most reliable on Windows)
                 root.iconbitmap(str(icon_p))
             else:
-                # Use iconphoto for PNG files
                 logo_img = Image.open(icon_p).convert("RGBA")
                 logo_img.thumbnail((32, 32), Image.Resampling.LANCZOS)
                 logo_tk = ImageTk.PhotoImage(logo_img)
@@ -209,6 +210,7 @@ def main() -> None:
                 root._logo_ref = logo_tk  # type: ignore[attr-defined]
         except Exception:
             pass
+    root.after(1, _set_icon)
 
     panel_outer = tk.Frame(root, bg=BORDER)
     panel_outer.pack(fill="both", expand=True, padx=14, pady=12)

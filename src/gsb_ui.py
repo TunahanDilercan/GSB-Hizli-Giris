@@ -32,17 +32,22 @@ def _get_icon_path() -> "Path | None":
         base = Path(__file__).resolve().parent
 
     # Check GSB standard locations - prioritize ICO (more reliable)
+    # Layout A: EXE is Desktop\GSB\GSB.exe  -> icons at Desktop\GSB_Sistem\GSB_Dosyalar\icons\
+    # Layout B: EXE is Desktop\GSB_Sistem\Uygulama\*.exe -> icons at Desktop\GSB_Sistem\GSB_Dosyalar\icons\
     candidates = [
-        base / "icons" / "icon.ico",                           # local ICO
-        base / "icons" / "favicon.png",                         # local PNG
-        base / "GSB_Dosyalar" / "icons" / "icon.ico",          # subfolder ICO
-        base / "GSB_Dosyalar" / "icons" / "favicon.png",       # subfolder PNG
-        base.parent / "GSB_Dosyalar" / "icons" / "icon.ico",   # sibling ICO
-        base.parent / "GSB_Dosyalar" / "icons" / "favicon.png",# sibling PNG
-        base.parent / "GSB_Sistem" / "GSB_Dosyalar" / "icons" / "icon.ico", # GSB_Sistem ICO
-        base.parent / "GSB_Sistem" / "GSB_Dosyalar" / "icons" / "favicon.png", # GSB_Sistem PNG
-        base.parent / "assets" / "icons" / "icon.ico",         # dev env ICO
-        base.parent / "assets" / "icons" / "icon.png",         # dev env PNG
+        base / "icons" / "icon.ico",                                              # same-dir ICO
+        base / "icons" / "favicon.png",                                           # same-dir PNG
+        base / "GSB_Dosyalar" / "icons" / "icon.ico",                             # subfolder ICO
+        base / "GSB_Dosyalar" / "icons" / "favicon.png",                          # subfolder PNG
+        base.parent / "GSB_Dosyalar" / "icons" / "icon.ico",                      # Layout B: Uygulama/../GSB_Dosyalar
+        base.parent / "GSB_Dosyalar" / "icons" / "favicon.png",                   # Layout B: PNG
+        base.parent / "GSB_Dosyalar" / "icons" / "GSB_Giris.ico",                 # Layout B: fallback ICO
+        base.parent.parent / "GSB_Sistem" / "GSB_Dosyalar" / "icons" / "icon.ico",# Layout A: GSB/../GSB_Sistem
+        base.parent.parent / "GSB_Sistem" / "GSB_Dosyalar" / "icons" / "favicon.png",
+        base.parent / "GSB_Sistem" / "GSB_Dosyalar" / "icons" / "icon.ico",       # Layout A alt
+        base.parent / "GSB_Sistem" / "GSB_Dosyalar" / "icons" / "favicon.png",
+        base.parent / "assets" / "icons" / "icon.ico",                            # dev env ICO
+        base.parent / "assets" / "icons" / "icon.png",                            # dev env PNG
     ]
     
     for c in candidates:
