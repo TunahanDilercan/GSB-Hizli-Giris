@@ -1,0 +1,32 @@
+# ---- Secrets / user-specific ----
+config_giris*.json
+**/config_giris*.json
+
+# ---- PyInstaller ----
+build/
+dist/
+*.spec
+
+# Release / packaging outputs
+release/
+*.zip
+
+# Binaries (prefer GitHub Releases)
+*.exe
+
+# ---- Python ----
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# ---- Virtual environments ----
+.venv/
+venv/
+
+# ---- IDE ----
+.vscode/
+.idea/
+
+# ---- OS ----
+Thumbs.db
+Desktop.ini
