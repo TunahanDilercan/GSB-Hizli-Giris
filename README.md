@@ -8,12 +8,12 @@ GSB Wifi ağlarına otomatik olarak giriş yapılmasını sağlayan, arka planda
 2. Masaüstüne çıkart.
 3. `GSB.exe` uygulamasını çalıştırıp bilgilerini kaydet.
 
-Uygulama arka planda çalışarak bağlantını yönetecektir.
+Uygulama masaüstüne kısayol üretecektir. Uygulama arka planda çalışarak bağlantını yönetecektir.
 
 ## Güvenlik
 
 - Kullanıcı adı ve şifreniz sadece **kendi bilgisayarınızda** saklanır.
-- Üçüncü şahıslarla paylaşılmaz. Kaynak kodları inceleyebilirsiniz.
+- Kaynak kodları inceleyebilirsiniz.
 
 > [!WARNING]
 > **Yasal Uyarı**
