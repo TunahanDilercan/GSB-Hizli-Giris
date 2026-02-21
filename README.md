@@ -1,6 +1,6 @@
 # GSB Hızlı Giriş
 
-GSB Wifi ağlarına otomatik olarak giriş yapılmasını sağlayan, arka planda çalışan hafif bir masaüstü uygulamasıdır. İnternet bağlantısının sürekliliğini sağlamak amacıyla geliştirilmiştir.
+GSB Wifi ağlarına otomatik olarak giriş yapılmasını sağlayan hafif bir masaüstü uygulamasıdır. 
 
 ## Kurulum
 
@@ -8,8 +8,7 @@ GSB Wifi ağlarına otomatik olarak giriş yapılmasını sağlayan, arka planda
 2. Masaüstüne çıkart.
 3. `GSB.exe` uygulamasını çalıştırıp bilgilerini kaydet.
 
-Uygulama masaüstüne kısayol üretecektir. Uygulama arka planda çalışarak bağlantını yönetecektir.
-
+Uygulama masaüstüne kısayol üretecektir. 
 ## Güvenlik
 
 - Kullanıcı adı ve şifreniz sadece **kendi bilgisayarınızda** saklanır.
