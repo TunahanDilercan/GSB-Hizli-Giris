@@ -1,20 +1,33 @@
-# GSB Hızlı Giriş
+# GSB Hizli Giris
 
-Bu proje, GSB WiFi portalına **hızlı giriş / hızlı çıkış** için masaüstü uygulamasıdır.
+GSB Wifi aglarina otomatik olarak giris yapilmasini saglayan, arka planda calisan hafif bir masaustu uygulamasidir. Bu arac, kullanicilarin surekli olarak kimlik dogrulama sayfasiyla ugrasmasini engellemek ve internet baglantisinin surekliligini saglamak amaciyla gelistirilmistir.
 
-## Kullanım (Önerilen)
-1) GitHub sayfasından **Releases** bölümüne gir
-2) En güncel `GSB-Release-....zip` dosyasını indir
-3) Zip’i aç ve `GSB\GSB.exe` çalıştır
-4) TC / şifreyi kaydet (masaüstüne kısayollar otomatik oluşur)
+## Ozellikler
 
-## Kaynak Kod
-Bu repo kaynak kodu içerir:
-- `src/`: Python kaynak kodları
-- `assets/icons/`: ikonlar
+Gelistirilmis bu surum sunulari icerir:
+- **Otomatik Kimlik Dogrulama:** GSB Wifi portalina hizli ve guvenli giris saglar.
+- **Sistem Tepsisi Destegi:** Uygulama arka planda calisir ve sistem tepsisinden yonetilebilir.
+- **Hafif ve Hizli:** Kaynak tuketimi minimum duzeydedir, bilgisayarinizi yavaslatmaz.
+- **Kolay Kurulum:** Tek bir calistirilebilir dosya uzerinden kurulum ve kullanim imkani sunar.
 
-Geliştirici olarak build almak istersen bağımlılıkları `pip` ile kurup PyInstaller ile derleyebilirsin.
+## Kurulum ve Kullanim
 
-## Güvenlik
-- `config_giris*.json` dosyaları **TC/şifre** içerir; repoya konulmaz.
-- `.exe` dosyaları repoya konulmaz; Release üzerinden yayınlanır.
+Bu projeyi kullanmak icin herhangi bir kod derlemenize veya Python kurmaniza gerek yoktur.
+
+1. Bu sayfanin **Releases** bolumune gidin.
+2. En guncel surum olan `.zip` dosyasini indirin.
+3. Arsiv dosyasini masaustunuze cikartin.
+4. Klasor icerisindeki `GSB.exe` uygulamasini calistirin.
+5. Kullanici bilgilerinizi girin ve "Kaydet" tusuna basin.
+
+Uygulama ilk calistirildiginda gerekli ayarlari yapacak ve masaustunuze baglantiyi yenilemek veya ayarlar menusune ulasmak icin gerekli kisayollari otomatik olarak olusturacaktir.
+
+## Guvenlik ve Gizlilik
+
+Bu yazilim acik kaynak kodludur; kodlari inceleyerek guvenliginden emin olabilirsiniz.
+- Sisteme girdiginiz kullanici adi ve sifreleriniz sadece yerel bilgisayarinizda saklanir.
+- Kisisel verileriniz sunuculara gonderilmez veya ucuncu sahıslarla paylasilmaz.
+
+## Yasal Uyari
+
+Bu proje tamamiyla bagimsiz bir gelistirici tarafindan hazirlanmistir ve Genclik ve Spor Bakanligi (GSB) ile resmi bir baglantisi yoktur. Yazilim sadece egitim ve kisisel kullanim amaclidir.
