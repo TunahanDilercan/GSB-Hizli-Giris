@@ -1,5 +1,7 @@
 import threading
 import tkinter as tk
+import sys
+from pathlib import Path
 
 # ── Renk paleti (tüm ekranlar) ─────────────────────────────────────────────
 BG     = "#0f172a"
@@ -22,6 +24,28 @@ def center_window(win: tk.Misc, width: int, height: int) -> None:
     win.geometry(f"{width}x{height}+{x}+{y}")
 
 
+def _get_icon_path() -> "Path | None":
+    """Find favicon.png in standard locations."""
+    if getattr(sys, 'frozen', False):
+        base = Path(sys.executable).parent
+    else:
+        base = Path(__file__).resolve().parent
+
+    # Check GSB standard locations
+    candidates = [
+        base / "icons" / "favicon.png",                         # local
+        base / "GSB_Dosyalar" / "icons" / "favicon.png",       # subfolder
+        base.parent / "GSB_Dosyalar" / "icons" / "favicon.png",# sibling (Uygulama/../../GSB_Dosyalar)
+        base.parent / "GSB_Sistem" / "GSB_Dosyalar" / "icons" / "favicon.png", # sibling GSB/../GSB_Sistem/GSB_Dosyalar
+        base.parent / "assets" / "icons" / "icon.png",         # dev env
+    ]
+    
+    for c in candidates:
+        if c.exists():
+            return c
+    return None
+
+
 def _make_dark_win(title: str, width: int, height: int,
                    parent: "tk.Misc | None" = None) -> "tk.Tk | tk.Toplevel":
     if parent is None:
@@ -29,6 +53,19 @@ def _make_dark_win(title: str, width: int, height: int,
     else:
         win = tk.Toplevel(parent)
         win.transient(parent)
+    
+    # Set Icon
+    try:
+        icon_p = _get_icon_path()
+        if icon_p and parent is None:
+            # iconphoto sets the icon for this window and its descendants
+            img = tk.PhotoImage(file=str(icon_p))
+            win.iconphoto(True, img)
+            # Keep a reference to avoid garbage collection
+            win._icon_ref = img 
+    except Exception:
+        pass
+
     win.title(title)
     win.resizable(False, False)
     win.configure(bg=BG)
