@@ -1,33 +1,32 @@
-# GSB Hizli Giris
+# GSB Hızlı Giriş
 
-GSB Wifi aglarina otomatik olarak giris yapilmasini saglayan, arka planda calisan hafif bir masaustu uygulamasidir. Bu arac, kullanicilarin surekli olarak kimlik dogrulama sayfasiyla ugrasmasini engellemek ve internet baglantisinin surekliligini saglamak amaciyla gelistirilmistir.
+GSB Wifi ağlarına otomatik olarak giriş yapılmasını sağlayan, arka planda çalışan hafif bir masaüstü uygulamasıdır. Bu araç, kullanıcıların sürekli olarak kimlik doğrulama sayfasıyla uğraşmasını engellemek ve internet bağlantısının sürekliliğini sağlamak amacıyla geliştirilmiştir.
 
-## Ozellikler
+## Özellikler
 
-Gelistirilmis bu surum sunulari icerir:
-- **Otomatik Kimlik Dogrulama:** GSB Wifi portalina hizli ve guvenli giris saglar.
-- **Sistem Tepsisi Destegi:** Uygulama arka planda calisir ve sistem tepsisinden yonetilebilir.
-- **Hafif ve Hizli:** Kaynak tuketimi minimum duzeydedir, bilgisayarinizi yavaslatmaz.
-- **Kolay Kurulum:** Tek bir calistirilebilir dosya uzerinden kurulum ve kullanim imkani sunar.
+- **Otomatik Kimlik Doğrulama:** GSB Wifi portalına hızlı ve güvenli giriş sağlar.
+- **Sistem Tepsisi Desteği:** Uygulama arka planda çalışır ve sistem tepsisinden yönetilebilir.
+- **Hafif ve Hızlı:** Kaynak tüketimi minimum düzeydedir, bilgisayarınızı yavaşlatmaz.
+- **Kolay Kurulum:** Tek bir çalıştırılabilir dosya üzerinden kurulum ve kullanım imkanı sunar.
 
-## Kurulum ve Kullanim
+## Kurulum ve Kullanım
 
-Bu projeyi kullanmak icin herhangi bir kod derlemenize veya Python kurmaniza gerek yoktur.
+Bu projeyi kullanmak için herhangi bir kod derlemenize veya Python kurmanıza gerek yoktur.
 
-1. Bu sayfanin **Releases** bolumune gidin.
-2. En guncel surum olan `.zip` dosyasini indirin.
-3. Arsiv dosyasini masaustunuze cikartin.
-4. Klasor icerisindeki `GSB.exe` uygulamasini calistirin.
-5. Kullanici bilgilerinizi girin ve "Kaydet" tusuna basin.
+1. Bu sayfanın **Releases** bölümüne gidin.
+2. En güncel sürüm olan `.zip` dosyasını indirin.
+3. Arşiv dosyasını masaüstünüze çıkartın.
+4. Klasör içerisindeki `GSB.exe` uygulamasını çalıştırın.
+5. Kullanıcı bilgilerinizi girin ve "Kaydet" tuşuna basın.
 
-Uygulama ilk calistirildiginda gerekli ayarlari yapacak ve masaustunuze baglantiyi yenilemek veya ayarlar menusune ulasmak icin gerekli kisayollari otomatik olarak olusturacaktir.
+Uygulama ilk çalıştırıldığında gerekli ayarları yapacak ve masaüstünüze bağlantıyı yenilemek veya ayarlar menüsüne ulaşmak için gerekli kısayolları otomatik olarak oluşturacaktır.
 
-## Guvenlik ve Gizlilik
+## Güvenlik ve Gizlilik
 
-Bu yazilim acik kaynak kodludur; kodlari inceleyerek guvenliginden emin olabilirsiniz.
-- Sisteme girdiginiz kullanici adi ve sifreleriniz sadece yerel bilgisayarinizda saklanir.
-- Kisisel verileriniz sunuculara gonderilmez veya ucuncu sahıslarla paylasilmaz.
+Bu yazılım açık kaynak kodludur; kodları inceleyerek güvenliğinden emin olabilirsiniz.
+- Sisteme girdiğiniz kullanıcı adı ve şifreleriniz sadece yerel bilgisayarınızda saklanır.
+- Kişisel verileriniz sunuculara gönderilmez veya üçüncü şahıslarla paylaşılmaz.
 
-## Yasal Uyari
+## Yasal Uyarı
 
-Bu proje tamamiyla bagimsiz bir gelistirici tarafindan hazirlanmistir ve Genclik ve Spor Bakanligi (GSB) ile resmi bir baglantisi yoktur. Yazilim sadece egitim ve kisisel kullanim amaclidir.
+Bu proje tamamen bağımsız bir geliştirici tarafından hazırlanmıştır ve Gençlik ve Spor Bakanlığı (GSB) ile resmi bir bağlantısı yoktur. Yazılım sadece eğitim ve kişisel kullanım amaçlıdır.
