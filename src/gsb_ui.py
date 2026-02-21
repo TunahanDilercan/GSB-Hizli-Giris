@@ -25,19 +25,24 @@ def center_window(win: tk.Misc, width: int, height: int) -> None:
 
 
 def _get_icon_path() -> "Path | None":
-    """Find favicon.png in standard locations."""
+    """Find favicon.png or icon.ico in standard locations."""
     if getattr(sys, 'frozen', False):
         base = Path(sys.executable).parent
     else:
         base = Path(__file__).resolve().parent
 
-    # Check GSB standard locations
+    # Check GSB standard locations - prioritize ICO (more reliable)
     candidates = [
-        base / "icons" / "favicon.png",                         # local
-        base / "GSB_Dosyalar" / "icons" / "favicon.png",       # subfolder
-        base.parent / "GSB_Dosyalar" / "icons" / "favicon.png",# sibling (Uygulama/../../GSB_Dosyalar)
-        base.parent / "GSB_Sistem" / "GSB_Dosyalar" / "icons" / "favicon.png", # sibling GSB/../GSB_Sistem/GSB_Dosyalar
-        base.parent / "assets" / "icons" / "icon.png",         # dev env
+        base / "icons" / "icon.ico",                           # local ICO
+        base / "icons" / "favicon.png",                         # local PNG
+        base / "GSB_Dosyalar" / "icons" / "icon.ico",          # subfolder ICO
+        base / "GSB_Dosyalar" / "icons" / "favicon.png",       # subfolder PNG
+        base.parent / "GSB_Dosyalar" / "icons" / "icon.ico",   # sibling ICO
+        base.parent / "GSB_Dosyalar" / "icons" / "favicon.png",# sibling PNG
+        base.parent / "GSB_Sistem" / "GSB_Dosyalar" / "icons" / "icon.ico", # GSB_Sistem ICO
+        base.parent / "GSB_Sistem" / "GSB_Dosyalar" / "icons" / "favicon.png", # GSB_Sistem PNG
+        base.parent / "assets" / "icons" / "icon.ico",         # dev env ICO
+        base.parent / "assets" / "icons" / "icon.png",         # dev env PNG
     ]
     
     for c in candidates:
@@ -54,15 +59,19 @@ def _make_dark_win(title: str, width: int, height: int,
         win = tk.Toplevel(parent)
         win.transient(parent)
     
-    # Set Icon
+    # Set Icon for ALL windows (both Tk and Toplevel)
     try:
         icon_p = _get_icon_path()
-        if icon_p and parent is None:
-            # iconphoto sets the icon for this window and its descendants
-            img = tk.PhotoImage(file=str(icon_p))
-            win.iconphoto(True, img)
-            # Keep a reference to avoid garbage collection
-            win._icon_ref = img 
+        if icon_p:
+            if str(icon_p).endswith('.ico'):
+                # Use iconbitmap for ICO files (most reliable on Windows)
+                win.iconbitmap(str(icon_p))
+            else:
+                # Use iconphoto for PNG files
+                img = tk.PhotoImage(file=str(icon_p))
+                win.iconphoto(True, img)
+                # Keep a reference to avoid garbage collection
+                win._icon_ref = img 
     except Exception:
         pass
 
